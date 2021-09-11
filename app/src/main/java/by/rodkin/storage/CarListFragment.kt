@@ -15,7 +15,6 @@ class CarListFragment: Fragment() {
     private lateinit var cars: ArrayList<Car>
     private lateinit var listener: OnActionAddCar
 
-    //private val rotateOpen: Animation by lazy { AnimationUtils.loadAnimation(requireContext(),R.anim.) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +49,7 @@ class CarListFragment: Fragment() {
 
     companion object {
 
-        fun newInstance(cars: ArrayList<Car>): CarListFragment {
+        fun newInstance(cars: List<Car>): CarListFragment {
             val fragment = CarListFragment()
             fragment.arguments = bundleOf(ARG_CARS to cars)
             return fragment

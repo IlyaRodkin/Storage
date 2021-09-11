@@ -5,8 +5,10 @@
       <map>
         <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/layout/activity_main.xml" value="0.31929347826086957" />
         <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/layout/dialog_add_car.xml" value="0.31929347826086957" />
+        <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/layout/dialog_filter_cars.xml" value="0.3515625" />
         <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/layout/fragment_cars_list.xml" value="0.31929347826086957" />
         <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/layout/item_car.xml" value="0.31929347826086957" />
+        <entry key="..\:/Users/iliar/AndroidStudioProjects/Storage/app/src/main/res/menu/menu_toolbar.xml" value="0.3515625" />
       </map>
     </option>
   </component>

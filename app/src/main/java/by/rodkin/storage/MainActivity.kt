@@ -2,27 +2,38 @@ package by.rodkin.storage
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import by.rodkin.storage.databinding.ActivityMainBinding
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity(),CarListFragment.OnActionAddCar {
+
+    private lateinit var db: AppDatabase
+
+    private var cars = emptyList<Car>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        db = App.instance?.getDatabase() ?: throw Exception("error")
+        updateUI()
+        setupAddCarToDbListener()
+        setupFilterModeListener()
         //databaseHelper = DatabaseHelper(applicationContext)
-        openRecyclerView(cars)
+
     }
 
-    override fun onResume() {
-        super.onResume()
-       // db = databaseHelper.readableDatabase
+    fun updateUI() {
+        if(cars != db.carDao().getAll() && cars.size != db.carDao().getAll().size)
+        cars = db.carDao().getAll()
+        openRecyclerView(cars)
 
         //carCursor = db.rawQuery("SELECT * FROM ${DatabaseHelper.TABLE}", null)
-
-
     }
 
-    private fun openRecyclerView(carsList: ArrayList<Car>) {
+    private fun openRecyclerView(carsList: List<Car>) {
         val fragment = CarListFragment.newInstance(carsList)
         val fragmentTransition = supportFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.fragmentContainer, fragment)
@@ -33,21 +44,32 @@ class MainActivity : AppCompatActivity(),CarListFragment.OnActionAddCar {
         AddCarDialogFragment().show(supportFragmentManager, AddCarDialogFragment.TAG)
     }
 
-    companion object {
-        val cars = arrayListOf(
-            Car(0, "toyota", 2009, 10000),
-            Car(1, "rover", 2019, 13200),
-            Car(2, "saab", 2014, 15000),
-            Car(3, "skoda", 2005, 3800),
-            Car(4, "subaru", 2003, 9200),
-            Car(5, "suzuki", 2012, 8500),
-            Car(0, "toyota", 2009, 10000),
-            Car(1, "rover", 2019, 13200),
-            Car(2, "saab", 2014, 15000),
-            Car(3, "skoda", 2005, 3800),
-            Car(4, "subaru", 2003, 9200),
-            Car(5, "suzuki", 2012, 8500),
-
-            )
+    private fun setupAddCarToDbListener(){
+        AddCarDialogFragment.setupListener(supportFragmentManager, this){
+            db.carDao().insert(it as Car)
+            updateUI()
+        }
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_toolbar,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        FilterCarsDialogFragment().show(supportFragmentManager,FilterCarsDialogFragment.TAG)
+        return true
+    }
+
+    private fun setupFilterModeListener(){
+        FilterCarsDialogFragment.setupListener(supportFragmentManager,this){
+             when(it) {
+                FilterCarsDialogFragment.SORT_BY_MODEL ->  cars = db.carDao().sortedByModel()
+                FilterCarsDialogFragment.SORT_BY_YEAR ->  cars = db.carDao().sortedByYear()
+                FilterCarsDialogFragment.SORT_BY_PRICE ->  cars = db.carDao().sortedByPrice()
+            }
+                updateUI()
+        }
+    }
+
 }

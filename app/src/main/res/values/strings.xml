@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Storage</string>
+    <string name="search_hint">search</string>
+    <string name="model">model</string>
+    <string name="year">year</string>
+    <string name="price">price</string>
 </resources>
