@@ -9,9 +9,9 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 data class Car(
     //val icon: Drawable?,
-    val model: String,
-    val year: Int,
-    val price: Int,
+    var model: String,
+    var year: Int,
+    var price: Int,
     @PrimaryKey(autoGenerate = true)
-    val id: Int? = null
+    var id: Int? = null
 ): Parcelable

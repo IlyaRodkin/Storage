@@ -13,13 +13,13 @@ interface CarDao {
     fun getById(id: Long): Car?
 
     @Insert
-    fun insert(car: Car?)
+    fun insert(car: Car)
 
     @Update
-    fun update(car: Car?)
+    fun update(car: Car)
 
     @Delete
-    fun delete(car: Car?)
+    fun delete(car: Car)
 
     @Query("SELECT * FROM car ORDER BY model")
     fun sortedByModel() : List<Car>

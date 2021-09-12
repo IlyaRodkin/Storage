@@ -33,7 +33,17 @@ class CarListFragment: Fragment() {
         binding = FragmentCarsListBinding.inflate(inflater, container, false)
         binding.recyclerViewCars.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = CarsAdapter(cars)
+            adapter = CarsAdapter(cars,
+            object : OnClickMoreButton{
+                override fun onCarUpdate(car: Car) {
+                    listener.onCarUpdate(car)
+                }
+
+                override fun onCarDelete(car: Car) {
+                    listener.onCarDelete(car)
+                }
+
+            })
         }
 
         binding.fabAdd.setOnClickListener {
@@ -44,7 +54,7 @@ class CarListFragment: Fragment() {
     }
 
     private fun onAddCar() {
-        listener.addToCarList()
+        listener.addToCarList(null)
     }
 
     companion object {
@@ -60,6 +70,8 @@ class CarListFragment: Fragment() {
     }
 
     interface OnActionAddCar{
-        fun addToCarList()
+        fun addToCarList(car:Car?)
+        fun onCarUpdate(car:Car)
+        fun onCarDelete(car:Car)
     }
 }

@@ -21,15 +21,15 @@ class FilterCarsDialogFragment: DialogFragment() {
         .create()
 
     dialog.setOnShowListener {
-        dialogBinding.bSortByModel.setOnClickListener { SortBy(SORT_BY_MODEL) }
-        dialogBinding.bSortByYear.setOnClickListener { SortBy(SORT_BY_YEAR) }
-        dialogBinding.bSortByPrice.setOnClickListener { SortBy(SORT_BY_PRICE) }
+        dialogBinding.bSortByModel.setOnClickListener { sortBy(SORT_BY_MODEL) }
+        dialogBinding.bSortByYear.setOnClickListener { sortBy(SORT_BY_YEAR) }
+        dialogBinding.bSortByPrice.setOnClickListener { sortBy(SORT_BY_PRICE) }
     }
 
     return dialog
 }
 
-    private fun SortBy( sortMode :Int) {
+    private fun sortBy( sortMode :Int) {
         parentFragmentManager.setFragmentResult(
            REQUEST_KEY, bundleOf(
                 KEY_FILTER_RESPONSE to sortMode)
