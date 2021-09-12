@@ -1,4 +1,4 @@
-package by.rodkin.storage
+package by.rodkin.storage.dbRoom
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

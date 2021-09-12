@@ -1,4 +1,4 @@
-package by.rodkin.storage
+package by.rodkin.storage.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import by.rodkin.storage.dbRoom.Car
+import by.rodkin.storage.CarsAdapter
+import by.rodkin.storage.OnClickMoreButton
 import by.rodkin.storage.databinding.FragmentCarsListBinding
 
 class CarListFragment: Fragment() {
@@ -34,7 +37,7 @@ class CarListFragment: Fragment() {
         binding.recyclerViewCars.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = CarsAdapter(cars,
-            object : OnClickMoreButton{
+            object : OnClickMoreButton {
                 override fun onCarUpdate(car: Car) {
                     listener.onCarUpdate(car)
                 }
@@ -70,8 +73,8 @@ class CarListFragment: Fragment() {
     }
 
     interface OnActionAddCar{
-        fun addToCarList(car:Car?)
-        fun onCarUpdate(car:Car)
-        fun onCarDelete(car:Car)
+        fun addToCarList(car: Car?)
+        fun onCarUpdate(car: Car)
+        fun onCarDelete(car: Car)
     }
 }

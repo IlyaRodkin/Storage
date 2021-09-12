@@ -1,4 +1,4 @@
-package by.rodkin.storage
+package by.rodkin.storage.dbRoom
 
 import  android.os.Parcelable
 import androidx.room.Entity

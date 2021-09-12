@@ -1,4 +1,4 @@
-package by.rodkin.storage
+package by.rodkin.storage.fragments
 
 import android.app.Dialog
 import android.os.Bundle

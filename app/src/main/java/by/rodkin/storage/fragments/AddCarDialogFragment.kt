@@ -1,4 +1,4 @@
-package by.rodkin.storage
+package by.rodkin.storage.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentResultListener
 import androidx.lifecycle.LifecycleOwner
+import by.rodkin.storage.dbRoom.Car
 import by.rodkin.storage.databinding.DialogAddCarBinding
 
 class AddCarDialogFragment : DialogFragment() {

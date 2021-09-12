@@ -2,6 +2,7 @@ package by.rodkin.storage
 
 import android.app.Application
 import androidx.room.Room
+import by.rodkin.storage.dbRoom.AppDatabase
 
 
 class App : Application() {

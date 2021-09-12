@@ -1,7 +1,5 @@
 package by.rodkin.storage
 
-import android.net.wifi.p2p.WifiP2pManager
-import android.provider.SyncStateContract.Helpers.update
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
@@ -9,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import by.rodkin.storage.databinding.ItemCarBinding
-import java.nio.file.Files.delete
+import by.rodkin.storage.dbRoom.Car
 
 interface OnClickMoreButton{
     fun onCarUpdate(car: Car)
@@ -17,7 +15,7 @@ interface OnClickMoreButton{
 }
 
 class CarsAdapter(private val listCars: List<Car>,
-private val actionListener: OnClickMoreButton) : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
+                  private val actionListener: OnClickMoreButton) : RecyclerView.Adapter<CarsAdapter.CarsViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarsViewHolder {

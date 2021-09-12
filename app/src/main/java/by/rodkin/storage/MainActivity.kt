@@ -5,6 +5,11 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import by.rodkin.storage.databinding.ActivityMainBinding
+import by.rodkin.storage.dbRoom.AppDatabase
+import by.rodkin.storage.dbRoom.Car
+import by.rodkin.storage.fragments.AddCarDialogFragment
+import by.rodkin.storage.fragments.CarListFragment
+import by.rodkin.storage.fragments.FilterCarsDialogFragment
 
 class MainActivity : AppCompatActivity(), CarListFragment.OnActionAddCar {
 
