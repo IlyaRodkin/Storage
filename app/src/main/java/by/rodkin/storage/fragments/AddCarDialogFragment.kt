@@ -15,8 +15,6 @@ import by.rodkin.storage.databinding.DialogAddCarBinding
 
 class AddCarDialogFragment : DialogFragment() {
 
-    //private var car: Car? = requireArguments().get(ARG_CAR) as Car
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialogBinding = DialogAddCarBinding.inflate(layoutInflater)
         val dialog = AlertDialog.Builder(requireContext())

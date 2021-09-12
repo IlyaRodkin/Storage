@@ -13,14 +13,17 @@ import by.rodkin.storage.fragments.FilterCarsDialogFragment
 
 class MainActivity : AppCompatActivity(), CarListFragment.OnActionAddCar {
 
+    private var _binding: ActivityMainBinding? = null
+    private val mBinding get() = _binding!!
+
     private lateinit var db: AppDatabase
 
     private var cars = emptyList<Car>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
         db = App.instance?.getDatabase() ?: throw Exception("error")
         updateUI()
         setupAddCarToDbListener()
@@ -90,4 +93,9 @@ class MainActivity : AppCompatActivity(), CarListFragment.OnActionAddCar {
         }
     }
 
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
