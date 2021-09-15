@@ -2,8 +2,10 @@
     <string name="app_name">Storage</string>
     <string name="search_hint">search</string>
     <string name="model">model</string>
-    <string name="year">year</string>
+    <string name="year">Year</string>
     <string name="price">price</string>
     <string name="update">update</string>
     <string name="delete">delete</string>
+    <string name="car_model">Car model</string>
+    <string name="cost">Cost</string>
 </resources>
