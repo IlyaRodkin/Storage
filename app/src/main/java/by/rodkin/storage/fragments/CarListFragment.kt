@@ -15,7 +15,7 @@ import by.rodkin.storage.databinding.FragmentCarsListBinding
 class CarListFragment: Fragment() {
 
     private lateinit var binding: FragmentCarsListBinding
-    private lateinit var cars: ArrayList<Car>
+    private lateinit var cars: List<Car>
     private lateinit var listener: OnActionAddCar
 
 
@@ -23,8 +23,8 @@ class CarListFragment: Fragment() {
         super.onCreate(savedInstanceState)
         listener = requireContext() as OnActionAddCar
 
-        cars = if(savedInstanceState != null) savedInstanceState.get(KEY_CARS) as ArrayList<Car>
-        else if (arguments != null) arguments?.get(ARG_CARS) as ArrayList<Car>
+        cars = if(savedInstanceState != null) savedInstanceState.get(KEY_CARS) as List<Car>
+        else if (arguments != null) arguments?.get(ARG_CARS) as List<Car>
         else throw IllegalAccessException("Can't get list of cars")
     }
 
